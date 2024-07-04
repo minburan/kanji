@@ -1,0 +1,55 @@
+import "./styles.css";
+import { useState, useEffect } from "react";
+/*
+export default function counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <>
+      <h1>Counter</h1>
+      <p>count:{count}</p>
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <button onClick={() => setCount(count - 1)}>-</button>
+      <button onClick={() => setCount(count * 2)}>*</button>
+      <button onClick={() => setCount(0)}>clear</button>
+    </>
+  ); 
+}
+*/
+
+const letters = [
+  { id: 1, string: "侃い", read: "つよい" },
+  { id: 2, string: "丞ける", read: "たすける" },
+  { id: 3, string: "伶しい", read: "さかしい" },
+  { id: 4, string: "蝉しい", read: "うつくしい" },
+  { id: 5, string: "謬る", read: "あやまる（「誤謬」の謬やん）" },
+  { id: 6, string: "夙に", read: "つとに" },
+  { id: 7, string: "牽く", read: "ひく（「牽引」の牽だね）" },
+  { id: 8, string: "碩きい", read: "おおきい（「碩学王」の碩だね）" },
+  { id: 9, string: "苑がる", read: "ふさがる" },
+];
+
+export default function practice() {
+  const [find, setFind] = useState([]);
+  useEffect(() => {
+    console.log(find);
+  }, [find]);
+  return (
+    <div>
+      <table>
+        <tr>
+          {letters.map((letter) => (
+            <div key={letter.id}>
+              <td>{letter.string}</td>
+              <td>
+                <button onClick={() => setFind([...find, letter.id])}>
+                  正解
+                </button>
+              </td>
+              <td>{find.includes(letter.id) && letter.read}</td>
+            </div>
+          ))}
+        </tr>
+      </table>
+    </div>
+  );
+}
